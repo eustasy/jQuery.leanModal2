@@ -9,22 +9,25 @@
 		<script src="https://cdn.jsdelivr.net/g/jquery,jquery.equalize"></script>
 		<script src="jQuery.leanModal2.js"></script>
 
+		<link rel="icon" href="http://eustasy.org/favicon.ico">
+		<link rel="shortcut icon" href="http://eustasy.org/favicon.ico">
+
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/normalize,colors.css">
 		<style>
 			body { margin: 0 auto; width: 1000px; }
 			header, footer { padding: 50px }
 			header { margin-bottom: 3px; }
 			footer { margin-top: 3px; }
-			section { display: inline-block; margin: 3px 0; padding: 50px 50px 100px; position: relative; width: 397px; vertical-align: top; }
+			section { display: inline-block; margin: 3px 0; padding: 50px 50px 150px; position: relative; width: 397px; vertical-align: top; }
 			code { display: block; padding: 10px; line-height: 2; white-space: pre-wrap; }
 			a { color: inherit; text-decoration: none; }
 			.align-center { text-align: center; }
 			.align-left { text-align: left; }
 			.display-none { display: none; }
 			.display-block { display: block; }
-			.modal { background: #fefefe; padding: 10px; }
+			.modal { background: #fefefe; padding: 10px; width: 500px; }
 			.rounded { border-radius: 5px; }
-			.button-bottom { bottom: 50px; left: 50px; position: absolute; right: 50px; }
+			.button-bottom { background: #fefefe; padding: 10px; bottom: 50px; left: 50px; margin: 0; position: absolute; right: 50px; }
 		</style>
 
 	</head>
@@ -41,7 +44,7 @@
 			<section class="leanmodal-basic background-belize-hole equalize" data-modal-id="#basic-example">
 				<h2>Basic</h2>
 				<code class="background-midnight-blue color-white rounded">$('.leanmodal').leanModal();</code>
-				<h3 class="button-bottom color-belize-hole display-block modal rounded">Basic Example</h3>
+				<h3 class="button-bottom color-belize-hole display-block rounded">Basic Example</h3>
 			</section>
 
 			<div id="basic-example" class="color-3 display-none modal rounded">
@@ -54,10 +57,10 @@
 
 			<section class="leanmodal-close background-belize-hole equalize" data-modal-id="#close-example">
 				<h2>with a Close button</h2>
-				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal(
-	{ closeButton: '.close' }
-);</code>
-				<h3><a class="button-bottom color-belize-hole display-block modal rounded" href="#close-example">Close Button Example</a></h3>
+				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
+	closeButton: '.close'
+});</code>
+				<h3 class="button-bottom color-belize-hole display-block rounded" href="#close-example">Close Button Example</h3>
 			</section>
 
 			<div id="close-example" class="color-3 display-none modal rounded">
@@ -75,10 +78,10 @@
 
 			<section class="leanmodal-opacity background-belize-hole equalize" data-modal-id="#opacity-example">
 				<h2>with a custom Opacity</h2>
-				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal-opacity').leanModal(
-	{ overlayOpacity: 0.9 }
-);</code>
-				<h3 class="button-bottom color-belize-hole display-block modal rounded">Custom Opacity Example</h3>
+				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal-opacity').leanModal({
+	overlayOpacity: 0.9
+});</code>
+				<h3 class="button-bottom color-belize-hole display-block rounded">Custom Opacity Example</h3>
 			</section>
 
 			<div id="opacity-example" class="color-3 display-none modal rounded">
@@ -91,13 +94,11 @@
 
 			<section class="leanmodal-both background-belize-hole equalize" data-modal-id="#both-example">
 				<h2>Both!</h2>
-				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal(
-	{
-		closeButton: '.close',
-		overlayOpacity: 0.9
-	}
-);</code>
-				<h3><a class="button-bottom color-belize-hole display-block modal rounded" href="#both-example">Close Button Example</a></h3>
+				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
+	closeButton: '.close',
+	overlayOpacity: 0.9
+});</code>
+				<h3 class="button-bottom color-belize-hole display-block rounded" href="#both-example">Close Button Example</h3>
 			</section>
 
 			<div id="both-example" class="color-3 display-none modal rounded">
@@ -111,7 +112,7 @@
 		</div>
 
 		<footer class="background-belize-hole">
-			<p>Footer</p>
+			<p><a href="http://opensource.org/licenses/MIT">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="http://eustasy.org/">eustasy</a></p>
 		</footer>
 
 		<script>equalize();</script>
