@@ -27,7 +27,7 @@
 
 			// If there isn't an overlay, add one.
 			if ( $('.js-target-jquery-leanmodal-overlay').length == 0 ) {
-				var style = 'background: #000; display: none; height: 100%; left: 0px; position: fixed; top: 0px; width: 100%; z-index:100;';
+				var style = 'background: #000; display: none; height: 100%; left: 0px; position: fixed; top: 0px; width: 100%; z-index: 100;';
 				var overlay = $('<div class="js-target-jquery-leanmodal-overlay" style="' + style + '"></div>');
 				$('body').append(overlay);
 			}
@@ -46,12 +46,11 @@
 					} else if ( $(this).attr('data-modal-id') ) {
 						var modal_id = $(this).attr('data-modal-id');
 					} else {
-						// TODO Error on neither.
+						return false;
 					} // IFHREF
 
 					// Set the function to close the overlay if you click it.
 					$('.js-target-jquery-leanmodal-overlay').click(function() {
-						console.log('CLICK');
 						leanModal_Close(modal_id);
 					});
 
