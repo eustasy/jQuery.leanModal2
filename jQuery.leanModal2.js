@@ -20,7 +20,7 @@
 				top: 100,
 				overlayOpacity: 0.5,
 				closeButton: false
-			}
+			};
 
 			// Merge in the passed options.
 			options = $.extend(defaults, options);
