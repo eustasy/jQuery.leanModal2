@@ -61,8 +61,8 @@
 						});
 					}
 
-					var modal_height = $(modal_id).outerHeight();
-					var modal_width = $(modal_id).outerWidth();
+					var modal_height = $(modal_id).innerHeight();
+					var modal_width = $(modal_id).innerWidth();
 					$(modal_id).css({
 						'display': 'block',
 						'position': 'fixed',
