@@ -1,4 +1,4 @@
-// jQuery.leanModal2.js
+// jQuery.leanModal2.js v2.2
 // MIT Licensed by eustasy http://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
@@ -60,6 +60,13 @@
 							leanModal_Close(modal_id);
 						});
 					}
+
+					// Close the modal on escape
+					$(document).on('keyup', function(evt) {
+						if (evt.keyCode == 27) {
+							leanModal_Close(modal_id);
+						}
+					});
 
 					var modal_height = $(modal_id).innerHeight();
 					var modal_width = $(modal_id).innerWidth();
