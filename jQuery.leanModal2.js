@@ -21,7 +21,7 @@
 				overlayOpacity: 0.5,
 				closeButton: false,
 				disableCloseOnOverlayClick: false,
-           		disableCloseOnEscape: false,
+				disableCloseOnEscape: false,
 			};
 
 			// Merge in the passed options.
@@ -53,7 +53,7 @@
 
 					// Set the function to close the overlay if you click it.
 					$('.js-target-jquery-leanmodal-overlay').click(function() {
-						if(!options.disableCloseOnOverlayClick) {
+						if ( !options.disableCloseOnOverlayClick ) {
 							leanModal_Close(modal_id);
 						}
 					});
@@ -67,8 +67,10 @@
 
 					// Close the modal on escape
 					$(document).on('keyup', function(evt) {
-						if(!options.disableCloseOnEscape) {			
-							if (evt.keyCode == 27) {
+						if (
+							!options.disableCloseOnEscape &&			
+							evt.keyCode == 27
+						) {
 								leanModal_Close(modal_id);
 							}
 						}
