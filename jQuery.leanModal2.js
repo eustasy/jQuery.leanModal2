@@ -1,4 +1,4 @@
-// jQuery.leanModal2.js v2.2
+// jQuery.leanModal2.js v2.3
 // MIT Licensed by eustasy http://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
