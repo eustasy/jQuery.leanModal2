@@ -71,8 +71,7 @@
 							!options.disableCloseOnEscape &&			
 							evt.keyCode == 27
 						) {
-								leanModal_Close(modal_id);
-							}
+							leanModal_Close(modal_id);
 						}
 					});
 
