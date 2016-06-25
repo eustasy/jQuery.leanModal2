@@ -102,7 +102,7 @@
 						'margin-left': - ( modal_width / 2 ) + 'px',
 						'opacity': 0,
 						'position': 'fixed',
-						'top': options.top + 'px'
+						'top': options.top + 'px',
 						'z-index': 11000,
 					});
 
