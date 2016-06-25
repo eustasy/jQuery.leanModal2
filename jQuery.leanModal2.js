@@ -1,4 +1,4 @@
-// jQuery.leanModal2.js v2.3
+// jQuery.leanModal2.js v2.3.1
 // MIT Licensed by eustasy http://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
@@ -7,7 +7,7 @@
 
 	// Function: Fade out the Overlay and a passed identifier
 	function leanModal_Close(modal_id) {
-		$('.js-target-jquery-leanmodal-overlay').fadeOut(300);
+		$('.js-leanmodal-overlay').fadeOut(300);
 		$(modal_id).fadeOut(200);
 	}
 
@@ -19,7 +19,7 @@
 			var defaults = {
 				top: 100,
 				overlayOpacity: 0.5,
-				closeButton: false,
+				closeButton: '.js-leanmodal-close',
 				disableCloseOnOverlayClick: false,
 				disableCloseOnEscape: false,
 			};
@@ -28,9 +28,9 @@
 			options = $.extend(defaults, options);
 
 			// If there isn't an overlay, add one.
-			if ( $('.js-target-jquery-leanmodal-overlay').length == 0 ) {
+			if ( $('.js-leanmodal-overlay').length == 0 ) {
 				var style = 'background: #000; display: none; height: 100%; left: 0px; position: fixed; top: 0px; width: 100%; z-index: 100;';
-				var overlay = $('<div class="js-target-jquery-leanmodal-overlay" style="' + style + '"></div>');
+				var overlay = $('<div class="js-leanmodal-overlay" style="' + style + '"></div>');
 				$('body').append(overlay);
 			}
 
@@ -41,18 +41,18 @@
 
 				$(this).unbind('click').click(function(e) {
 
-					// IFHREF Fetch the Modal_ID
-					if ( $(this).attr('href') ) {
-						var modal_id = $(this).attr('href');
-					// IFHREF Fall back to if no href data-open-modal.
-					} else if ( $(this).attr('data-modal-id') ) {
+					// IFHREF Use data-open-modal if available
+					if ( $(this).attr('data-modal-id') ) {
 						var modal_id = $(this).attr('data-modal-id');
+					// IFHREF Fall back to href
+					} else if ( $(this).attr('href') ) {
+						var modal_id = $(this).attr('href');
 					} else {
 						return false;
 					} // IFHREF
 
 					// Set the function to close the overlay if you click it.
-					$('.js-target-jquery-leanmodal-overlay').click(function() {
+					$('.js-leanmodal-overlay').click(function() {
 						if ( !options.disableCloseOnOverlayClick ) {
 							leanModal_Close(modal_id);
 						}
@@ -68,7 +68,7 @@
 					// Close the modal on escape
 					$(document).on('keyup', function(evt) {
 						if (
-							!options.disableCloseOnEscape &&			
+							!options.disableCloseOnEscape &&
 							evt.keyCode == 27
 						) {
 							leanModal_Close(modal_id);
@@ -87,8 +87,8 @@
 						'top': options.top + 'px'
 					});
 
-					$('.js-target-jquery-leanmodal-overlay').css({ 'display': 'block', opacity: 0 });
-					$('.js-target-jquery-leanmodal-overlay').fadeTo(300, options.overlayOpacity);
+					$('.js-leanmodal-overlay').css({ 'display': 'block', opacity: 0 });
+					$('.js-leanmodal-overlay').fadeTo(300, options.overlayOpacity);
 					$(modal_id).fadeTo(200, 1);
 
 					// Prevent whatever the default was (probably scrolling).
