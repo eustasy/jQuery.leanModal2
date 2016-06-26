@@ -6,116 +6,143 @@
 		<meta charset="UTF-8">
 		<title>jQuery.leanModal2.js</title>
 
-		<script src="https://cdn.jsdelivr.net/g/jquery,jquery.equalize"></script>
+		<script src="https://cdn.jsdelivr.net/g/jquery,jquery.equalize,jquery.downboy"></script>
 		<script src="jQuery.leanModal2.js"></script>
 
-		<link rel="icon" href="http://eustasy.org/favicon.ico">
-		<link rel="shortcut icon" href="http://eustasy.org/favicon.ico">
+		<link rel="icon" href="https://eustasy.org/favicon.ico">
+		<link rel="shortcut icon" href="https://eustasy.org/favicon.ico">
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/normalize,colors.css">
+		<link rel="stylesheet" href="grid.css">
 		<style>
-			body { margin: 0 auto; width: 1000px; }
-			header, footer { padding: 50px }
-			header { margin-bottom: 3px; }
-			footer { margin-top: 3px; }
-			section { display: inline-block; margin: 3px 0; padding: 50px 50px 150px; position: relative; width: 397px; vertical-align: top; }
-			code { display: block; padding: 10px; line-height: 2; white-space: pre-wrap; }
+			header,
+			.section-guide,
+			footer {
+				margin: 0 auto;
+				width: 100%;
+			}
+			header { padding: 5rem; }
+			footer { padding: 5rem 5rem 3rem; }
+			.section-guide {
+				max-width: 80rem;
+			}
+			section {
+				display: inline-block;
+				max-width: 80rem;
+				padding: 0 5rem;
+				position: relative;
+				vertical-align: top;
+			}
+			code {
+				display: block;
+				line-height: 2;
+				padding: 1rem;
+				text-align: left;
+				white-space: pre-wrap;
+			}
 			a { color: inherit; text-decoration: none; }
+			.button {
+				box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),
+				            0 2px 10px 0 rgba(0,0,0,0.12);
+				margin: 2rem 0;
+				padding: 1rem;
+				transition: all 200ms ease-in-out;
+			}
+			.button:hover { opacity: 0.9; }
+			.button:active { box-shadow: none; }
 			.align-center { text-align: center; }
 			.align-left { text-align: left; }
+			.align-right { text-align: right; }
 			.display-none { display: none; }
 			.display-block { display: block; }
-			.modal { background: #fefefe; padding: 10px; width: 500px; }
+			.modal {
+				max-width: 50rem;
+				padding: 1rem 3rem;
+				z-index: 11000;
+			}
+			.modal *:first-child { margin-top: 0; }
 			.rounded { border-radius: 5px; }
-			.button-bottom { background: #fefefe; padding: 10px; bottom: 50px; left: 50px; margin: 0; position: absolute; right: 50px; }
+			/* TODO Remove background-white */
+			.background-white { background: white; }
 		</style>
 
 	</head>
 
-	<body class="align-center background-peter-river color-white">
+	<body class="align-center background-belize-hole color-white">
 
-		<header class="background-belize-hole">
+		<header>
 			<h1>jQuery.leanModal2</h1>
 			<p>A pure solution to putting your own HTML and CSS to work as a modal dialogue.</p>
 		</header>
 
-		<div class="group">
+		<div class="section-guide grid">
 
-			<section class="leanmodal-basic background-belize-hole equalize" data-modal-id="#basic-example">
-				<h2>Basic</h2>
-				<code class="background-midnight-blue color-white rounded">$('.leanmodal').leanModal();</code>
-				<h3 class="button-bottom color-belize-hole display-block rounded">Basic Example</h3>
-			</section>
-
-			<div id="basic-example" class="color-3 display-none modal rounded">
-				<h3>Hello!</h3>
-				<p>Modal thing.</p>
-				<p>Basic</p>
-			</div>
-
-			<script>$('.leanmodal-basic').leanModal();</script>
-
-			<section class="leanmodal-close background-belize-hole equalize" data-modal-id="#close-example">
-				<h2>with a Close button</h2>
-				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
-	closeButton: '.close'
+			<section class="whole smablet-half leanmodal-defaults equalize" data-modal-id="#defaults-example">
+				<h2>Defaults</h2>
+				<code class="background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
+	top: '15vh',
+	overlayOpacity: 0.7,
+	closeButton: '.js-leanmodal-close',
+	disableCloseOnOverlayClick: false,
+	disableCloseOnEscape: false,
+	fadeTime: 200,
 });</code>
-				<h3 class="button-bottom color-belize-hole display-block rounded" href="#close-example">Close Button Example</h3>
+				<h3 class="background-white button color-belize-hole display-block rounded">Defaults Example</h3>
 			</section>
 
-			<div id="close-example" class="color-3 display-none modal rounded">
+			<div id="defaults-example" class="background-white color-3 display-none modal rounded">
 				<h3>Hello!</h3>
-				<p>Modal thing.</p>
-				<p>Pass your own</p>
-				<p><a class="close color-pomegranate" href="#close">Close</a></p>
+				<p>This is a modal using our defaults.</p>
+				<a href="#" class="color-pomegranate js-leanmodal-close">Close</a>
 			</div>
 
-			<script>$('.leanmodal-close').leanModal( { closeButton: '.close' } );</script>
+			<script>$('.leanmodal-defaults').leanModal();</script>
+
+			<section class="whole smablet-half leanmodal-modified equalize" data-modal-id="#modified-example">
+				<h2>Modified</h2>
+				<code class="background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
+	top: '1em',
+	overlayOpacity: 0.3,
+	closeButton: '.close-it',
+	disableCloseOnOverlayClick: true,
+	disableCloseOnEscape: true,
+	fadeTime: 2000,
+});</code>
+				<h3 class="background-white button color-belize-hole display-block rounded">Modified Example</h3>
+			</section>
+
+			<div id="modified-example" class="background-white color-3 display-none modal rounded">
+				<h3>Hello!</h3>
+				<p>This is a modal using all the options.</p>
+				<a href="#" class="color-pomegranate close-it">Close</a>
+			</div>
+
+			<script>$('.leanmodal-modified').leanModal({
+	top: '1em',
+	overlayOpacity: 0.3,
+	closeButton: '.close-it',
+	disableCloseOnOverlayClick: true,
+	disableCloseOnEscape: true,
+	fadeTime: 2000,
+});</script>
 
 		</div>
 
-		<div class="group">
-
-			<section class="leanmodal-opacity background-belize-hole equalize" data-modal-id="#opacity-example">
-				<h2>with a custom Opacity</h2>
-				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
-	overlayOpacity: 0.9
-});</code>
-				<h3 class="button-bottom color-belize-hole display-block rounded">Custom Opacity Example</h3>
-			</section>
-
-			<div id="opacity-example" class="color-3 display-none modal rounded">
-				<h2>with a custom Opacity</h2>
-				<p>Set the background opacity to whatever you like by passing in an options array like you would for a close button.</p>
-			</div>
-
-			<script>$('.leanmodal-opacity').leanModal( { overlayOpacity: 0.9 } );</script>
-
-			<section class="leanmodal-both background-belize-hole equalize" data-modal-id="#both-example">
-				<h2>Both!</h2>
-				<code class="align-left background-midnight-blue color-white rounded">$('.leanmodal').leanModal({
-	closeButton: '.close',
-	overlayOpacity: 0.9
-});</code>
-				<h3 class="button-bottom color-belize-hole display-block rounded" href="#both-example">Close Button Example</h3>
-			</section>
-
-			<div id="both-example" class="color-3 display-none modal rounded">
-				<h3>Hello!</h3>
-				<p>Pass your own</p>
-				<p><a class="close color-pomegranate" href="#close">Close</a></p>
-			</div>
-
-			<script>$('.leanmodal-both').leanModal( { closeButton: '.close', overlayOpacity: '0.9' } );</script>
-
-		</div>
-
-		<footer class="background-belize-hole">
+		<footer>
 			<p><a href="http://opensource.org/licenses/MIT">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="http://eustasy.org/">eustasy</a></p>
 		</footer>
 
-		<script>equalize();</script>
-
 	</body>
+
+	<script>
+		$(function() {
+			equalize();
+			downBoy('footer');
+			window.onresize = function() {
+				equalize();
+				downBoy('footer');
+			};
+		});
+	</script>
 
 </html>

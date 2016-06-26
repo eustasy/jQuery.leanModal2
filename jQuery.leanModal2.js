@@ -1,4 +1,4 @@
-////	jQuery.leanModal2.js v2.3.3
+////	jQuery.leanModal2.js v2.4
 // MIT Licensed by eustasy https://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
@@ -14,12 +14,12 @@
 			////	Default Options
 			// Set some Defaults.
 			var defaults = {
-				top: '100px',
+				top: '15vh',
 				overlayOpacity: 0.7,
 				closeButton: '.js-leanmodal-close',
 				disableCloseOnOverlayClick: false,
 				disableCloseOnEscape: false,
-				fadeTime: 300,
+				fadeTime: 200,
 				modalCenter: true,
 			};
 			// Merge in any passed options.
@@ -30,6 +30,8 @@
 			function leanModal_Close(modal_id) {
 				$('.js-leanmodal-overlay').fadeOut(options.fadeTime);
 				$(modal_id).fadeOut(options.fadeTime);
+				$('.js-leanmodal-overlay').unbind('click');
+				$(document).off('keyup');
 			}
 
 			////	There can be only one.
@@ -78,7 +80,7 @@
 					// except when `disableCloseOnEscape` is set to `true`
 					if ( !options.disableCloseOnEscape ) {
 						$(document).on('keyup', function(evt) {
-							if ( evt.keyCode == 27	) {
+							if ( evt.keyCode == 27 ) {
 								leanModal_Close(modal_id);
 							}
 						});
@@ -114,12 +116,12 @@
 					// Fade in the modal and overlay.
 					$('.js-leanmodal-overlay').css({ 'display': 'block', opacity: 0 });
 					$('.js-leanmodal-overlay').fadeTo(options.fadeTime, options.overlayOpacity);
-					$(modal_id).fadeIn(options.fadeTime);
+					$(modal_id).fadeTo(options.fadeTime, 1);
 
 					////	Default Prevention
 					// Prevent whatever the default was (probably scrolling).
 					e.preventDefault();
-					
+
 				}); // CLICKOVERRIDE
 			}); // FOREACHLINK
 		} // EXTENDFUNC_LEANMODAL
