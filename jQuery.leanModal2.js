@@ -1,16 +1,9 @@
-////	jQuery.leanModal2.js v2.3.2
+////	jQuery.leanModal2.js v2.3.3
 // MIT Licensed by eustasy https://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
 // ANONFUNC Wrap in an anonymous function.
 (function($){
-
-	////	Close the Modal
-	// FUNCTION: Fade out the overlay and a passed identifier.
-	function leanModal_Close(modal_id) {
-		$('.js-leanmodal-overlay').fadeOut(300);
-		$(modal_id).fadeOut(200);
-	}
 
 	////	Extend jQuery
 	// EXTENDFUNC
@@ -21,14 +14,23 @@
 			////	Default Options
 			// Set some Defaults.
 			var defaults = {
-				top: 100,
-				overlayOpacity: 0.5,
+				top: '100px',
+				overlayOpacity: 0.7,
 				closeButton: '.js-leanmodal-close',
 				disableCloseOnOverlayClick: false,
 				disableCloseOnEscape: false,
+				fadeTime: 300,
+				modalCenter: true,
 			};
 			// Merge in any passed options.
 			options = $.extend(defaults, options);
+
+			////	Close the Modal
+			// FUNCTION: Fade out the overlay and a passed identifier.
+			function leanModal_Close(modal_id) {
+				$('.js-leanmodal-overlay').fadeOut(options.fadeTime);
+				$(modal_id).fadeOut(options.fadeTime);
+			}
 
 			////	There can be only one.
 			// Overlay. If there isn't an overlay, add one.
@@ -96,21 +98,23 @@
 					// Actually it doesn't, but it is hard to globally position.
 					var modal_height = $(modal_id).innerHeight();
 					var modal_width = $(modal_id).innerWidth();
-					$(modal_id).css({
-						'display': 'block',
-						'left': 50 + '%',
-						'margin-left': - ( modal_width / 2 ) + 'px',
-						'opacity': 0,
-						'position': 'fixed',
-						'top': options.top + 'px',
-						'z-index': 11000,
-					});
+					if ( options.modalCenter ) {
+						$(modal_id).css({
+							'display': 'block',
+							'left': 50 + '%',
+							'margin-left': - ( modal_width / 2 ) + 'px',
+							'opacity': 0,
+							'position': 'fixed',
+							'top': options.top,
+							'z-index': 11000,
+						});
+					}
 
 					////	Curtain Up
 					// Fade in the modal and overlay.
 					$('.js-leanmodal-overlay').css({ 'display': 'block', opacity: 0 });
-					$('.js-leanmodal-overlay').fadeTo(300, options.overlayOpacity);
-					$(modal_id).fadeTo(200, 1);
+					$('.js-leanmodal-overlay').fadeTo(options.fadeTime, options.overlayOpacity);
+					$(modal_id).fadeIn(options.fadeTime);
 
 					////	Default Prevention
 					// Prevent whatever the default was (probably scrolling).
