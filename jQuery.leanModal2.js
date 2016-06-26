@@ -1,4 +1,4 @@
-////	jQuery.leanModal2.js v2.4
+////	jQuery.leanModal2.js v2.5
 // MIT Licensed by eustasy https://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
@@ -103,8 +103,10 @@
 					if ( options.modalCenter ) {
 						$(modal_id).css({
 							'display': 'block',
-							'left': 50 + '%',
-							'margin-left': - ( modal_width / 2 ) + 'px',
+							//'left': 50 + '%',
+							//'margin-left': - ( modal_width / 2 ) + 'px',
+							'margin-left': '50%',
+							'transform': 'translateX(-50%)',
 							'opacity': 0,
 							'position': 'fixed',
 							'top': options.top,
