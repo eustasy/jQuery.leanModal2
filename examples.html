@@ -52,6 +52,7 @@
 			}
 			.button:hover { opacity: 0.9; }
 			.button:active { box-shadow: none; }
+			.clickable { cursor: pointer; }
 			.align-center { text-align: center; }
 			.align-left { text-align: left; }
 			.align-right { text-align: right; }
@@ -89,7 +90,7 @@
 	disableCloseOnEscape: false,
 	fadeTime: 200,
 });</code>
-				<h3 class="background-white button color-belize-hole display-block rounded">Defaults Example</h3>
+				<h3 class="clickable background-white button color-belize-hole display-block rounded">Defaults Example</h3>
 			</section>
 
 			<section class="whole smablet-half leanmodal-modified equalize" data-modal-id="#modified-example">
@@ -102,19 +103,19 @@
 	disableCloseOnEscape: true,
 	fadeTime: 2000,
 });</code>
-				<h3 class="background-white button color-belize-hole display-block rounded">Modified Example</h3>
+				<h3 class="clickable background-white button color-belize-hole display-block rounded">Modified Example</h3>
 			</section>
 
 		</div>
 
 		<footer>
-			<p><a href="http://opensource.org/licenses/MIT">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="http://eustasy.org/">eustasy</a></p>
+			<p><a href="https://github.com/eustasy/jQuery.leanModal2/blob/master/LICENSE.md">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="http://eustasy.org/">eustasy</a></p>
 		</footer>
 
 		<div id="defaults-example" class="background-white color-3 display-none modal rounded">
 			<h3>Hello!</h3>
 			<p>This is a modal using our defaults.</p>
-			<a href="#" class="color-pomegranate js-leanmodal-close">Close</a>
+			<a class="clickable color-pomegranate js-leanmodal-close">Close</a>
 		</div>
 
 		<script>$('.leanmodal-defaults').leanModal();</script>
@@ -122,7 +123,7 @@
 		<div id="modified-example" class="background-white color-3 display-none modal rounded">
 			<h3>Hello!</h3>
 			<p>This is a modal using all the options.</p>
-			<a href="#" class="color-pomegranate close-it">Close</a>
+			<a class="clickable color-pomegranate close-it">Close</a>
 		</div>
 
 		<script>
