@@ -129,6 +129,6 @@
 
 				}) // CLICKOVERRIDE
 			}) // FOREACHLINK
-		} // EXTENDFUNC_LEANMODAL
+		}, // EXTENDFUNC_LEANMODAL
 	}) // EXTENDFUNC
 })(jQuery) // ANONFUNC This passes in `jQuery` as `$`
