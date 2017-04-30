@@ -2,6 +2,8 @@
 // MIT Licensed by eustasy https://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
+/*global jQuery*/
+
 // ANONFUNC Wrap in an anonymous function.
 (function($){
 
@@ -23,7 +25,7 @@
 				modalCenter: true,
 			}
 			// Merge in any passed options.
-			options = $.extend(defaults, options);
+			options = $.extend(defaults, options)
 
 			////	Close the Modal
 			// FUNCTION: Fade out the overlay and a passed identifier.
@@ -56,11 +58,12 @@
 
 					////	Select the Modal Identifier
 					// IFHREF Use data-open-modal if available
+					var modal_id
 					if ( $(this).attr('data-modal-id') ) {
-						var modal_id = $(this).attr('data-modal-id')
+						modal_id = $(this).attr('data-modal-id')
 					// IFHREF Fall back to href
 					} else if ( $(this).attr('href') ) {
-						var modal_id = $(this).attr('href')
+						modal_id = $(this).attr('href')
 					// IFHREF Fail entirely.
 					} else {
 						return false
@@ -98,8 +101,8 @@
 					////	Modal Positioning
 					// Position the modal centrally using JavaScript, because CSS sucks.
 					// Actually it doesn't, but it is hard to globally position.
-					var modal_height = $(modal_id).innerHeight()
-					var modal_width = $(modal_id).innerWidth()
+					//var modal_height = $(modal_id).innerHeight()
+					//var modal_width = $(modal_id).innerWidth()
 					if ( options.modalCenter ) {
 						$(modal_id).css({
 							'display': 'block',
