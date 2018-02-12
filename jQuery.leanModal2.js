@@ -108,12 +108,18 @@
 							'display': 'block',
 							//'left': 50 + '%',
 							//'margin-left': - ( modal_width / 2 ) + 'px',
-							'margin-left': '50%',
-							'transform': 'translateX(-50%)',
+							//'margin-left': '50%',
+							//'transform': 'translateX(-50%)',
 							'opacity': 0,
-							'position': 'fixed',
+							//'position': 'fixed', //fixed position will relinquish flexbox's influence
 							'top': options.top,
 							'z-index': 11000,
+						})
+						$(modal_id).parent.().css({
+							'display':'flex',
+							'align-items':'center',
+							'justify-content':'center',
+							'position':'fixed',
 						})
 					}
 
