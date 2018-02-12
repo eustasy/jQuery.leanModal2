@@ -115,7 +115,7 @@
 							'top': options.top,
 							'z-index': 11000,
 						})
-						$(modal_id).parent.().css({
+						$(modal_id).parent().css({
 							'display':'flex',
 							'align-items':'center',
 							'justify-content':'center',
