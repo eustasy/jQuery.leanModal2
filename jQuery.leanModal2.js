@@ -27,7 +27,7 @@
 			options = $.extend(defaults, options)
 
 			////	Close the Modal
-			// FUNCTION: Fade out the overlay and a passed identifier while destroying the modal center aligner.
+			// FUNCTION: Fade out the overlay and a passed identifier.
 			function leanModal_Close(modal_id) {
 				$('#js-leanmodal-overlay').fadeOut(options.fadeTime)
 				$(modal_id).fadeOut(options.fadeTime)
@@ -110,7 +110,7 @@
 							'opacity': 0,
 							'z-index': 11000,
 						})
-						$(modal_id).appendTo('#js-leanmodal-aligner')
+						$(modal_id).appendTo('#js-leanmodal-overlay')
 					}
 
 					////	Curtain Up
