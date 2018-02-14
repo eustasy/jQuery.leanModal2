@@ -98,7 +98,7 @@
 					// Close the modal when someone clicks on the overlay,
 					// except when `disableCloseOnOverlayClick` is set to `true`
 					if ( !options.disableCloseOnOverlayClick ) {
-						$('#js-leanmodal-overlay').click(function() {
+						$('#js-leanmodal-overlay').click(function(e) {
 							if ( e.target == this ) {
 								leanModal_Close(modal_id)
 							}
