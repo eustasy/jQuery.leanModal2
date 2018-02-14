@@ -118,7 +118,7 @@
 							'z-index': 11000,
 						})
 					var style = 'display: flex; align-items: center; justify-content: center; position: fixed; top: 0px; width: 100vw; height: 100vh; z-index: 11000'
-					var modalAligner = $(`<div class="js-leanmodal-aligner" style="${style}"></div`)
+					var modalAligner = $('<div class="js-leanmodal-aligner" style="' + style + '"></div')
 					$(modal_id).parent().append(modalAligner)
 					$(modal_id).appendTo('.js-leanmodal-aligner')
 					}
