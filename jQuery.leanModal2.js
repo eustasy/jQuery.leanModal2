@@ -100,6 +100,8 @@
 					if ( !options.disableCloseOnOverlayClick ) {
 						$('#js-leanmodal-overlay').click(function() {
 							leanModal_Close(modal_id)
+						}).children().click(function(e) {
+							e.stopPropagation()
 						})
 					}
 
