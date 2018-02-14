@@ -1,4 +1,4 @@
-////	jQuery.leanModal2.js v2.5
+////	jQuery.leanModal2.js v2.6.2
 // MIT Licensed by eustasy https://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
@@ -16,7 +16,6 @@
 			////	Default Options
 			// Set some Defaults.
 			var defaults = {
-				top: '15vh',
 				overlayOpacity: 0.7,
 				closeButton: '.js-leanmodal-close',
 				disableCloseOnOverlayClick: false,
@@ -30,18 +29,12 @@
 			////	Close the Modal
 			// FUNCTION: Fade out the overlay and a passed identifier.
 			function leanModal_Close(modal_id) {
-				$('.js-leanmodal-overlay').fadeOut(options.fadeTime)
+				$('#js-leanmodal-overlay').fadeOut(options.fadeTime)
 				$(modal_id).fadeOut(options.fadeTime)
-				$('.js-leanmodal-overlay').unbind('click')
+				$('#js-leanmodal-overlay').unbind('click')
 				$(document).off('keyup')
-			}
-
-			////	There can be only one.
-			// Overlay. If there isn't an overlay, add one.
-			if ( $('.js-leanmodal-overlay').length == 0 ) {
-				var style = 'background: #000; display: none; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100;'
-				var overlay = $('<div class="js-leanmodal-overlay" style="' + style + '"></div>')
-				$('body').append(overlay)
+				$(modal_id).appendTo('body')
+				$('#js-leanmodal-overlay').remove()
 			}
 
 			////	Everything is Linked
@@ -89,12 +82,26 @@
 						})
 					}
 
+					////	There can be only one.
+					// Overlay. If there isn't an overlay, add one.
+					if ( $('#js-leanmodal-overlay').length == 0 ) {
+						var style =
+						    'background: rgba(0, 0, 0, ' +
+						    options.overlayOpacity +
+						    '); display: none; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100; ' +
+						    'align-items: center; justify-content: center;'
+						var overlay = $('<div id="js-leanmodal-overlay" style="' + style + '"></div>')
+						$('body').append(overlay)
+					}
+
 					////	Envelope in Darkness
 					// Close the modal when someone clicks on the overlay,
 					// except when `disableCloseOnOverlayClick` is set to `true`
 					if ( !options.disableCloseOnOverlayClick ) {
-						$('.js-leanmodal-overlay').click(function() {
-							leanModal_Close(modal_id)
+						$('#js-leanmodal-overlay').click(function(e) {
+							if ( e.target == this ) {
+								leanModal_Close(modal_id)
+							}
 						})
 					}
 
@@ -106,21 +113,16 @@
 					if ( options.modalCenter ) {
 						$(modal_id).css({
 							'display': 'block',
-							//'left': 50 + '%',
-							//'margin-left': - ( modal_width / 2 ) + 'px',
-							'margin-left': '50%',
-							'transform': 'translateX(-50%)',
 							'opacity': 0,
-							'position': 'fixed',
-							'top': options.top,
 							'z-index': 11000,
 						})
+						$(modal_id).appendTo('#js-leanmodal-overlay')
 					}
 
 					////	Curtain Up
 					// Fade in the modal and overlay.
-					$('.js-leanmodal-overlay').css({ 'display': 'block', opacity: 0 })
-					$('.js-leanmodal-overlay').fadeTo(options.fadeTime, options.overlayOpacity)
+					$('#js-leanmodal-overlay').css({ 'display': 'flex', opacity: 0 })
+					$('#js-leanmodal-overlay').fadeTo(options.fadeTime, 1)
 					$(modal_id).fadeTo(options.fadeTime, 1)
 
 					////	Default Prevention
