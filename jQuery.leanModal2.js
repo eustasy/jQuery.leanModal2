@@ -85,7 +85,11 @@
 					////	There can be only one.
 					// Overlay. If there isn't an overlay, add one.
 					if ( $('#js-leanmodal-overlay').length == 0 ) {
-						var style = 'background: #000; display: none; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100; align-items: center; justify-content: center;';
+						var style =
+						    'background: rgba(0, 0, 0, ' +
+						    options.overlayOpacity +
+						    '); display: none; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100; ' +
+						    'align-items: center; justify-content: center;';
 						var overlay = $('<div id="js-leanmodal-overlay" style="' + style + '"></div>')
 						$('body').append(overlay)
 					}
@@ -116,7 +120,7 @@
 					////	Curtain Up
 					// Fade in the modal and overlay.
 					$('#js-leanmodal-overlay').css({ 'display': 'flex', opacity: 0 })
-					$('#js-leanmodal-overlay').fadeTo(options.fadeTime, options.overlayOpacity)
+					$('#js-leanmodal-overlay').fadeTo(options.fadeTime, 1)
 					$(modal_id).fadeTo(options.fadeTime, 1)
 
 					////	Default Prevention
