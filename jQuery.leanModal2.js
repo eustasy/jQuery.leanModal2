@@ -99,9 +99,9 @@
 					// except when `disableCloseOnOverlayClick` is set to `true`
 					if ( !options.disableCloseOnOverlayClick ) {
 						$('#js-leanmodal-overlay').click(function() {
-							leanModal_Close(modal_id)
-						}).children().click(function(e) {
-							e.stopPropagation()
+							if ( e.target == this ) {
+								leanModal_Close(modal_id)
+							}
 						})
 					}
 
