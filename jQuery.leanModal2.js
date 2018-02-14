@@ -16,7 +16,6 @@
 			////	Default Options
 			// Set some Defaults.
 			var defaults = {
-				top: '15vh',
 				overlayOpacity: 0.7,
 				closeButton: '.js-leanmodal-close',
 				disableCloseOnOverlayClick: false,
@@ -28,7 +27,7 @@
 			options = $.extend(defaults, options)
 
 			////	Close the Modal
-			// FUNCTION: Fade out the overlay and a passed identifier while destroying the modal center aligner..
+			// FUNCTION: Fade out the overlay and a passed identifier while destroying the modal center aligner.
 			function leanModal_Close(modal_id) {
 				$('.js-leanmodal-overlay').fadeOut(options.fadeTime)
 				$(modal_id).fadeOut(options.fadeTime)
@@ -108,13 +107,7 @@
 					if ( options.modalCenter ) {
 						$(modal_id).css({
 							'display': 'block',
-							//'left': 50 + '%',
-							//'margin-left': - ( modal_width / 2 ) + 'px',
-							//'margin-left': '50%',
-							//'transform': 'translateX(-50%)',
 							'opacity': 0,
-							//'position': 'fixed', //fixed position will relinquish flexbox's influence
-							'top': options.top,
 							'z-index': 11000,
 						})
 						var style = 'display: flex; align-items: center; justify-content: center; position: fixed; top: 0px; width: 100vw; height: 100vh; z-index: 11000'
