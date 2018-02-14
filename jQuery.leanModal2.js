@@ -28,12 +28,14 @@
 			options = $.extend(defaults, options)
 
 			////	Close the Modal
-			// FUNCTION: Fade out the overlay and a passed identifier.
+			// FUNCTION: Fade out the overlay and a passed identifier while destroying the modal center aligner..
 			function leanModal_Close(modal_id) {
 				$('.js-leanmodal-overlay').fadeOut(options.fadeTime)
 				$(modal_id).fadeOut(options.fadeTime)
 				$('.js-leanmodal-overlay').unbind('click')
 				$(document).off('keyup')
+				$(modal_id).appendTo('body')
+				$('.js-leanmodal-aligner').remove()
 			}
 
 			////	There can be only one.
@@ -115,12 +117,10 @@
 							'top': options.top,
 							'z-index': 11000,
 						})
-						$(modal_id).parent().css({
-							'display':'flex',
-							'align-items':'center',
-							'justify-content':'center',
-							'position':'fixed',
-						})
+					var style = 'display: flex; align-items: center; justify-content: center; position: fixed; top: 0px; width: 100vw; height: 100vh; z-index: 11000'
+					var modalAligner = $(`<div class="js-leanmodal-aligner" style="${style}"></div`)
+					$(modal_id).parent().append(modalAligner)
+					$(modal_id).appendTo('.js-leanmodal-aligner')
 					}
 
 					////	Curtain Up
