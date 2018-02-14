@@ -89,7 +89,7 @@
 						    'background: rgba(0, 0, 0, ' +
 						    options.overlayOpacity +
 						    '); display: none; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100; ' +
-						    'align-items: center; justify-content: center;';
+						    'align-items: center; justify-content: center;'
 						var overlay = $('<div id="js-leanmodal-overlay" style="' + style + '"></div>')
 						$('body').append(overlay)
 					}
