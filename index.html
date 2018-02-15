@@ -45,11 +45,13 @@
 			<section class="whole smablet-half equalize">
 				<h2>Defaults</h2>
 				<textarea class="code rounded" readonly>$('.leanmodal').leanModal({
-	overlayOpacity: 0.7,
+	defaultStyles: true, // GLOBAL
+	fadeTime: 200, // GLOBAL
+	overlayOpacity: 0.7, // GLOBAL
 	closeButton: '.js-leanmodal-close',
 	disableCloseOnOverlayClick: false,
 	disableCloseOnEscape: false,
-	fadeTime: 200,
+	modalCenter: true,
 });</textarea>
 				<h3 class="button clickable rounded leanmodal-defaults" data-modal-id="#defaults-example">Default Example</h3>
 			</section>
@@ -57,11 +59,13 @@
 			<section class="whole smablet-half equalize">
 				<h2>Modified</h2>
 				<textarea class="code rounded" readonly>$('.leanmodal').leanModal({
-	overlayOpacity: 0.3,
+	defaultStyles: true, // GLOBAL
+	fadeTime: 200, // GLOBAL
+	overlayOpacity: 0.7, // GLOBAL
 	closeButton: '.close-it',
 	disableCloseOnOverlayClick: true,
 	disableCloseOnEscape: true,
-	fadeTime: 0,
+	modalCenter: true,
 });</textarea>
 				<h3 class="button clickable rounded leanmodal-modified" data-modal-id="#modified-example">Modified Example</h3>
 			</section>
@@ -90,11 +94,9 @@
 
 		<script>
 			$('.leanmodal-modified').leanModal({
-				overlayOpacity: 0.3,
 				closeButton: '.close-it',
 				disableCloseOnOverlayClick: true,
 				disableCloseOnEscape: true,
-				fadeTime: 0,
 			});
 		</script>
 
