@@ -1,4 +1,4 @@
-////	jQuery.leanModal2.js v2.6.2
+////	jQuery.leanModal2.js v2.6.3
 // MIT Licensed by eustasy https://eustasy.org
 // Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
@@ -16,25 +16,67 @@
 			////	Default Options
 			// Set some Defaults.
 			var defaults = {
-				overlayOpacity: 0.7,
+				defaultStyles: true, // GLOBAL
+				fadeTime: 200, // GLOBAL
+				overlayOpacity: 0.7, // GLOBAL
 				closeButton: '.js-leanmodal-close',
 				disableCloseOnOverlayClick: false,
 				disableCloseOnEscape: false,
-				fadeTime: 200,
 				modalCenter: true,
 			}
 			// Merge in any passed options.
 			options = $.extend(defaults, options)
 
+			//// Default styles
+			if ( options.defaultStyles ) {
+				if ( $('#js-leanmodal-styles').length == 0 ) {
+					$('<style>')
+						.prop('type', 'text/css')
+						.prop('id', 'js-leanmodal-styles')
+						.html('\
+							@keyframes smoothFadeOut {\
+								from { opacity: 1; }\
+								to { opacity: 0; }\
+							}\
+							@keyframes smoothFadeIn {\
+								from { opacity: 0; }\
+								to { opacity: 1; }\
+							}\
+							#js-leanmodal-overlay {\
+								align-items: center;\
+								background: rgba(0, 0, 0, ' + options.overlayOpacity + ');\
+								display: none;\
+								height: 100%;\
+								justify-content: center;\
+								left: 0;\
+								position: fixed;\
+								top: 0;\
+								width: 100%;\
+							}\
+							.js-leanmodal-inactive {\
+								animation: smoothFadeOut ' + options.fadeTime + 'ms ease-in-out both;\
+							}\
+							.js-leanmodal-active {\
+								animation: smoothFadeIn ' + options.fadeTime + 'ms ease-in-out both;\
+								display: block;\
+								z-index: 1000\
+							}\
+							#js-leanmodal-overlay.js-leanmodal-active {\
+								display: flex;\
+								z-index: 100;\
+							}'
+						).appendTo('head')
+				}
+			}
+
 			////	Close the Modal
 			// FUNCTION: Fade out the overlay and a passed identifier.
 			function leanModal_Close(modal_id) {
-				$('#js-leanmodal-overlay').fadeOut(options.fadeTime)
-				$(modal_id).fadeOut(options.fadeTime)
+				$('#js-leanmodal-overlay').removeClass('js-leanmodal-active').addClass('js-leanmodal-inactive')
+				$(modal_id).removeClass('js-leanmodal-active').addClass('js-leanmodal-inactive')
 				$('#js-leanmodal-overlay').unbind('click')
 				$(document).off('keyup')
 				$(modal_id).appendTo('body')
-				$('#js-leanmodal-overlay').remove()
 			}
 
 			////	Everything is Linked
@@ -85,12 +127,7 @@
 					////	There can be only one.
 					// Overlay. If there isn't an overlay, add one.
 					if ( $('#js-leanmodal-overlay').length == 0 ) {
-						var style =
-						    'background: rgba(0, 0, 0, ' +
-						    options.overlayOpacity +
-						    '); display: none; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100; ' +
-						    'align-items: center; justify-content: center;'
-						var overlay = $('<div id="js-leanmodal-overlay" style="' + style + '"></div>')
+						var overlay = $('<div id="js-leanmodal-overlay"></div>')
 						$('body').append(overlay)
 					}
 
@@ -106,24 +143,15 @@
 					}
 
 					////	Modal Positioning
-					// Position the modal centrally using JavaScript, because CSS sucks.
-					// Actually it doesn't, but it is hard to globally position.
-					//var modal_height = $(modal_id).innerHeight()
-					//var modal_width = $(modal_id).innerWidth()
+					// Position the modal centrally inside the overlay using flexbox.
 					if ( options.modalCenter ) {
-						$(modal_id).css({
-							'display': 'block',
-							'opacity': 0,
-							'z-index': 11000,
-						})
 						$(modal_id).appendTo('#js-leanmodal-overlay')
 					}
 
 					////	Curtain Up
 					// Fade in the modal and overlay.
-					$('#js-leanmodal-overlay').css({ 'display': 'flex', opacity: 0 })
-					$('#js-leanmodal-overlay').fadeTo(options.fadeTime, 1)
-					$(modal_id).fadeTo(options.fadeTime, 1)
+					$('#js-leanmodal-overlay').removeClass('js-leanmodal-inactive').addClass('js-leanmodal-active')
+					$(modal_id).removeClass('js-leanmodal-inactive').addClass('js-leanmodal-active')
 
 					////	Default Prevention
 					// Prevent whatever the default was (probably scrolling).
