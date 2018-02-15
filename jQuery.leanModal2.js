@@ -53,6 +53,9 @@
 								top: 0;\
 								width: 100%;\
 							}\
+							.js-leanmodal-link {\
+								cursor: pointer;\
+							}\
 							.js-leanmodal-inactive {\
 								animation: smoothFadeOut ' + options.fadeTime + 'ms ease-in-out both;\
 							}\
@@ -83,7 +86,7 @@
 			// FOREACHLINK For each targeted link.
 			return this.each(function() {
 				// Force this to look like a link.
-				$(this).css({ 'cursor': 'pointer' })
+				$(this).addClass('js-leanmodal-link')
 
 				////	Command Override
 				// Override the existing click command,
