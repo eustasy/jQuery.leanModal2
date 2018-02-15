@@ -2,10 +2,9 @@ Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
 ---------------------
 
-The MIT License (MIT)
-====================
+# The MIT License (MIT)
 
-Copyright &copy; 2017 [eustasy](http://eustasy.org)
+Copyright &copy; 2018 [eustasy](https://eustasy.org)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
