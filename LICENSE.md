@@ -1,7 +1,3 @@
-Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
-
----------------------
-
 # The MIT License (MIT)
 
 Copyright &copy; 2018 [eustasy](https://eustasy.org)
