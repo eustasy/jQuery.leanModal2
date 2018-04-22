@@ -7,8 +7,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d20dec8955b70d7a2026/maintainability)](https://codeclimate.com/github/eustasy/jQuery.leanModal2/maintainability)
 [![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=6741324)](https://www.bountysource.com/teams/eustasy/issues?tracker_ids=6741324)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/gh/eustasy/jQuery.leanModal2/badge?style=rounded)](https://www.jsdelivr.com/package/gh/eustasy/jQuery.leanModal2)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Feustasy%2FjQuery.leanModal2.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Feustasy%2FjQuery.leanModal2?ref=badge_shield)
 
 Built for all the short dialogs, alerts, panels and such associated with an app, that you may want to handle in a modal window. Designed to handle hidden content, and doesn't apply any styles to the target element, other than for displaying and positioning.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Feustasy%2FjQuery.leanModal2.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Feustasy%2FjQuery.leanModal2?ref=badge_large)
 
 ###### Based on leanModal v1.1 by Ray Stone - http://finelysliced.com.au
 
