@@ -2,10 +2,7 @@
 ##### A pure solution to putting your own HTML and CSS to work as a modal dialogue.
 ###### MIT Licensed by [eustasy](https://eustasy.org)
 
-[![Build Status](https://travis-ci.org/eustasy/jQuery.leanModal2.svg?branch=master)](https://travis-ci.org/eustasy/jQuery.leanModal2)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/60032efd707a4ccab8e743b5ba0b81d4)](https://www.codacy.com/app/lewisgoddard/jQuery-leanModal2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eustasy/jQuery.leanModal2&amp;utm_campaign=Badge_Grade)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d20dec8955b70d7a2026/maintainability)](https://codeclimate.com/github/eustasy/jQuery.leanModal2/maintainability)
-[![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=6741324)](https://www.bountysource.com/teams/eustasy/issues?tracker_ids=6741324)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/gh/eustasy/jQuery.leanModal2/badge?style=rounded)](https://www.jsdelivr.com/package/gh/eustasy/jQuery.leanModal2)
 
 Built for all the short dialogs, alerts, panels and such associated with an app, that you may want to handle in a modal window. Designed to handle hidden content, and doesn't apply any styles to the target element, other than for displaying and positioning.
