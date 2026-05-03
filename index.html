@@ -51,22 +51,15 @@
 
 		<div class="section-guide grid">
 
-			<section class="whole">
-				<h2>Installation</h2>
-				<p>Include after jQuery, preferably from jsDelivr:</p>
-				<textarea class="code rounded" readonly><script src="https://cdn.jsdelivr.net/gh/eustasy/jQuery.leanModal2@2/jQuery.leanModal2.min.js"></script></textarea>
+			<section class="whole smablet-half equalize">
+				<h2>Installation &amp; Usage</h2>
+				<p>Include after jQuery, preferably from jsDelivr. Then add a trigger element with a <code>data-modal-id</code> attribute pointing to the <code>id</code> of the modal element, and initialise leanModal on the trigger's selector. A standard <code>href</code> attribute can be used instead of <code>data-modal-id</code>.</p>
 			</section>
 
-		</div>
+			<section class="whole smablet-half equalize">
+				<textarea class="code rounded" readonly><script src="https://cdn.jsdelivr.net/gh/eustasy/jQuery.leanModal2@2/jQuery.leanModal2.min.js"></script>
 
-		<hr class="section-breaker">
-
-		<div class="section-guide grid">
-
-			<section class="whole">
-				<h2>Usage</h2>
-				<p>Add a trigger element with a <code>data-modal-id</code> attribute pointing to the <code>id</code> of the modal element, then initialise leanModal on the trigger's selector. A standard <code>href</code> attribute can be used instead of <code>data-modal-id</code>.</p>
-				<textarea class="code rounded" readonly><button class="js-leanmodal-trigger" data-modal-id="#my-modal">Open</button>
+<button class="js-leanmodal-trigger" data-modal-id="#my-modal">Open</button>
 
 <div id="my-modal">
 	Modal content goes here.
