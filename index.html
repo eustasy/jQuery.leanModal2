@@ -10,27 +10,31 @@
 		<meta name="keywords" content="eustasy jquery plugin modal dialog">
 		<meta name="description" content="A pure solution to putting your own HTML and CSS to work as a modal dialogue.">
 		<title>jQuery.leanModal2.js &nbsp;&middot;&nbsp; eustasy Labs</title>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/eustasy/Colors.css@1/colors.min.css,gh/necolas/normalize.css@8/normalize.min.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lusitana|Source+Code+Pro" data-noprefix>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/necolas/normalize.css@8/normalize.min.css,gh/eustasy/Colors.css@2/flatui.min.css">
 		<link rel="stylesheet" href="https://labs.eustasy.org/assets/css/grid.min.css">
 		<link rel="stylesheet" href="https://labs.eustasy.org/assets/css/labs.css">
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-45667989-11', 'eustasy.org');
-			ga('send', 'pageview');
-		</script>
-		<script src="https://cdn.jsdelivr.net/combine/gh/jquery/jquery@3/dist/jquery.min.js,gh/jackmoore/autosize@4/dist/autosize.min.js,gh/eustasy/jQuery.equalize@1/jquery.equalize.min.js,gh/eustasy/jQuery.downBoy@1/jquery.downboy.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/combine/gh/jquery/jquery@3/dist/jquery.min.js,gh/jackmoore/autosize@6/dist/autosize.min.js"></script>
 		<script src="jQuery.leanModal2.js"></script>
 		<style>
-			@media (max-width: 768px) {
-				.js-leanmodal-modal {
-					border-bottom-left-radius: 0;
-					border-bottom-right-radius: 0;
-					width: 100%;
-				}
+			code, pre, .code, .code-ref {
+				font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+			}
+			p {
+				line-height: 1.5;
+				margin-bottom: 1em;
+				font-size: 1.125em;
+				font-family: system-ui, sans-serif;
+				max-width: 40em;
+				text-align: left;
+			}
+			.code-ref {
+				background: var(--flatui-clouds);
+				color: var(--flatui-belize-hole);
+				padding: 0.1em 0.3em;
+				border-radius: 3px;
+			}
+			p.text-center {
+				max-width: none;
 			}
 		</style>
 	</head>
@@ -44,8 +48,8 @@
 		</a>
 		<header>
 			<h1>jQuery.leanModal2</h1>
-			<p>A pure solution to putting your own HTML and CSS to work as a modal dialogue.</p>
-			<p class="sub-title">by <a href="https://labs.eustasy.org/">eustasy Labs</a></p>
+			<p class="text-center">A pure solution to putting your own HTML and CSS to work as a modal dialogue.</p>
+			<p class="text-center sub-title">by <a href="https://labs.eustasy.org/">eustasy Labs</a></p>
 		</header>
 		<hr class="section-breaker">
 
@@ -53,11 +57,12 @@
 
 			<section class="whole smablet-half equalize">
 				<h2>Installation &amp; Usage</h2>
-				<p>Include after jQuery, preferably from jsDelivr. Then add a trigger element with a <code>data-modal-id</code> attribute pointing to the <code>id</code> of the modal element, and initialise leanModal on the trigger's selector. A standard <code>href</code> attribute can be used instead of <code>data-modal-id</code>.</p>
+				<p>Include after jQuery, preferably from jsDelivr. Then add a trigger element with a <span class="code-ref">data-modal-id</span> attribute pointing to the <span class="code-ref">id</span> of the modal element, and initialise leanModal on the trigger's selector. A standard <span class="code-ref">href</span> attribute can be used instead of <span class="code-ref">data-modal-id</span>.</p>
+				<p>Note: The modal element must be a sibling to the trigger element, or a child of a sibling element. This is because the plugin uses jQuery's <span class="code-ref">.next()</span> method to find the modal.</p>
 			</section>
 
 			<section class="whole smablet-half equalize">
-				<textarea class="code rounded" readonly><script src="https://cdn.jsdelivr.net/gh/eustasy/jQuery.leanModal2@2/jQuery.leanModal2.min.js"></script>
+				<textarea class="code rounded" readonly><script src="jQuery.leanModal2.min.js"></script>
 
 <button class="js-leanmodal-trigger" data-modal-id="#my-modal">Open</button>
 
@@ -110,10 +115,10 @@
 		<hr class="section-breaker">
 
 		<footer>
-			<p><a href="https://github.com/eustasy/jQuery.leanModal2/blob/master/LICENSE.md">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2/releases">Releases</a></p>
+			<p class="text-center"><a href="https://github.com/eustasy/jQuery.leanModal2/blob/master/LICENSE.md">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2/releases">Releases</a></p>
 		</footer>
 
-		<div id="defaults-example" class="background-white color-2 display-none js-leanmodal-modal rounded">
+		<div id="defaults-example" class="background-flatui-clouds color-flatui-midnight-blue display-none js-leanmodal-modal rounded">
 			<h3>Hello!</h3>
 			<p>This is a modal using our defaults.</p>
 			<a class="clickable color-flatui-pomegranate js-leanmodal-close no-decoration">Close</a>
@@ -121,7 +126,7 @@
 
 		<script>$('.leanmodal-defaults').leanModal();</script>
 
-		<div id="modified-example" class="background-white color-2 display-none js-leanmodal-modal rounded">
+		<div id="modified-example" class="background-flatui-clouds color-flatui-midnight-blue display-none js-leanmodal-modal rounded">
 			<h3>Hello!</h3>
 			<p>This is a modal using all the options.</p>
 			<a class="clickable color-flatui-pomegranate close-it no-decoration">Close</a>
@@ -140,15 +145,5 @@
 	<script>$(function(){autosize($('textarea'));});</script>
 	<script>$('textarea').one('click',function(){$(this).select();});</script>
 	<script>$('textarea').dblclick(function(){$(this).select();});</script>
-	<script>
-		$(function() {
-			equalize();
-			downBoy('footer');
-			window.onresize = function() {
-				equalize();
-				downBoy('footer');
-			};
-		});
-	</script>
 
 </html>
