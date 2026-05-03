@@ -18,3 +18,38 @@ This fork of the original leanModal contains many fixes and improvements, and as
 - Improvement: No need for additional CSS for the overlay, neither linked nor inlined. It is added with the element.
 - Improvement: Names functions more clearly to avoid conflicts.
 - Improvement: Added official minified version.
+
+### Usage
+
+Add a trigger element with a `data-modal-id` attribute pointing to the `id` of the modal element, then initialise leanModal on the trigger's selector.
+
+```html
+<button class="js-leanmodal-trigger" data-modal-id="#my-modal">Open</button>
+
+<div id="my-modal">
+    Modal content goes here.
+    <button class="js-leanmodal-close">Close</button>
+</div>
+
+<script>
+    $('.js-leanmodal-trigger').leanModal();
+</script>
+```
+
+Alternatively, a standard `href` attribute pointing to the modal `id` can be used instead of `data-modal-id`.
+
+```html
+<a class="js-leanmodal-trigger" href="#my-modal">Open</a>
+```
+
+### Options
+
+| Option | Default | Description |
+|---|---|---|
+| `defaultStyles` | `true` | Inject default overlay and animation styles. |
+| `fadeTime` | `200` | Fade duration in milliseconds. |
+| `overlayOpacity` | `0.7` | Opacity of the background overlay. |
+| `closeButton` | `'.js-leanmodal-close'` | Selector for the element(s) that close the modal. |
+| `disableCloseOnOverlayClick` | `false` | Prevent closing when the overlay is clicked. |
+| `disableCloseOnEscape` | `false` | Prevent closing when the Escape key is pressed. |
+| `modalCenter` | `true` | Centre the modal inside the overlay using flexbox. |
