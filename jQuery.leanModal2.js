@@ -67,6 +67,11 @@
 							#js-leanmodal-overlay.js-leanmodal-active {\
 								display: flex;\
 								z-index: 100;\
+							}\
+							@media (max-width: 768px) {\
+								#js-leanmodal-overlay {\
+									align-items: flex-end;\
+								}\
 							}'
 						).appendTo('head')
 				}
