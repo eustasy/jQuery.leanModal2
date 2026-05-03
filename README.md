@@ -2,8 +2,6 @@
 
 ##### A pure solution to putting your own HTML and CSS to work as a modal dialogue.
 
-[![Normal](https://github.com/eustasy/jQuery.leanModal2/actions/workflows/normal.yml/badge.svg)](https://github.com/eustasy/jQuery.leanModal2/actions/workflows/normal.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/d20dec8955b70d7a2026/maintainability)](https://codeclimate.com/github/eustasy/jQuery.leanModal2/maintainability)
 [![License](https://img.shields.io/github/license/eustasy/jQuery.leanModal2)](https://github.com/eustasy/jQuery.equalize/blob/main/LICENSE.md)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/gh/eustasy/jQuery.leanModal2/badge?style=rounded)](https://www.jsdelivr.com/package/gh/eustasy/jQuery.leanModal2)
 
