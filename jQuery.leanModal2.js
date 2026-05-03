@@ -86,10 +86,10 @@
 			// FUNCTION: Fade out the overlay and a passed identifier.
 			function leanModal_Close(modal_id) {
 				$('#js-leanmodal-overlay').removeClass('js-leanmodal-active').addClass('js-leanmodal-inactive')
-				$(modal_id).removeClass('js-leanmodal-active').addClass('js-leanmodal-inactive')
+				$(document.querySelector(modal_id)).removeClass('js-leanmodal-active').addClass('js-leanmodal-inactive')
 				$('#js-leanmodal-overlay').unbind('click')
 				$(document).off('keyup')
-				$(modal_id).appendTo('body')
+				$(document.querySelector(modal_id)).appendTo('body')
 			}
 
 			////	Everything is Linked
@@ -116,6 +116,13 @@
 					} else {
 						return false
 					} // IFHREF
+
+					////	Validate the Modal Identifier
+					// Ensure modal_id is a CSS selector (starts with # or .)
+					// to prevent DOM-based XSS via jQuery HTML interpretation.
+					if ( !/^[#.][^\s]/.test(modal_id) ) {
+						return false
+					}
 
 					////	Close with closeButton
 					// If `closeButton` is set,
@@ -158,13 +165,13 @@
 					////	Modal Positioning
 					// Position the modal centrally inside the overlay using flexbox.
 					if ( options.modalCenter ) {
-							$(modal_id).appendTo('#js-leanmodal-overlay')
+							$(document.querySelector(modal_id)).appendTo('#js-leanmodal-overlay')
 						}
 
 						////	Curtain Up
 						// Fade in the modal and overlay.
 						$('#js-leanmodal-overlay').removeClass('js-leanmodal-inactive').addClass('js-leanmodal-active')
-						$(modal_id).removeClass('js-leanmodal-inactive').addClass('js-leanmodal-active')
+						$(document.querySelector(modal_id)).removeClass('js-leanmodal-inactive').addClass('js-leanmodal-active')
 					////	Default Prevention
 					// Prevent whatever the default was (probably scrolling).
 					e.preventDefault()
