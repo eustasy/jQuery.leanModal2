@@ -19,6 +19,14 @@ This fork of the original leanModal contains many fixes and improvements, and as
 - Improvement: Names functions more clearly to avoid conflicts.
 - Improvement: Added official minified version.
 
+### Installation
+
+Include after jQuery, preferably from jsDelivr:
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/eustasy/jQuery.leanModal2@2/jQuery.leanModal2.min.js"></script>
+```
+
 ### Usage
 
 Add a trigger element with a `data-modal-id` attribute pointing to the `id` of the modal element, then initialise leanModal on the trigger's selector.
