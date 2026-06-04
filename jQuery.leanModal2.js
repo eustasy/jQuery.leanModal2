@@ -5,7 +5,7 @@
 /*global jQuery*/
 
 // ANONFUNC Wrap in an anonymous function.
-(function ($) {
+;(function ($) {
   ////	Extend jQuery
   // EXTENDFUNC
   $.fn.extend({
@@ -21,9 +21,9 @@
         disableCloseOnOverlayClick: false,
         disableCloseOnEscape: false,
         modalCenter: true,
-      };
+      }
       // Merge in any passed options.
-      options = $.extend(defaults, options);
+      options = $.extend(defaults, options)
 
       //// Default styles
       if (options.defaultStyles) {
@@ -82,27 +82,27 @@
 									border-bottom-right-radius: 0;\
 									width: 100%;\
 								}\
-							}",
+							}"
             )
-            .appendTo("head");
+            .appendTo("head")
         }
       }
 
       ////	Close the Modal
       // FUNCTION: Fade out the overlay and a passed identifier.
       function leanModal_Close(modal_id) {
-        $("#js-leanmodal-overlay").removeClass("js-leanmodal-active").addClass("js-leanmodal-inactive");
-        $(document.querySelector(modal_id)).removeClass("js-leanmodal-active").addClass("js-leanmodal-inactive");
-        $("#js-leanmodal-overlay").unbind("click");
-        $(document).off("keyup");
-        $(document.querySelector(modal_id)).appendTo("body");
+        $("#js-leanmodal-overlay").removeClass("js-leanmodal-active").addClass("js-leanmodal-inactive")
+        $(document.querySelector(modal_id)).removeClass("js-leanmodal-active").addClass("js-leanmodal-inactive")
+        $("#js-leanmodal-overlay").unbind("click")
+        $(document).off("keyup")
+        $(document.querySelector(modal_id)).appendTo("body")
       }
 
       ////	Everything is Linked
       // FOREACHLINK For each targeted link.
       return this.each(function () {
         // Force this to look like a link.
-        $(this).addClass("js-leanmodal-link");
+        $(this).addClass("js-leanmodal-link")
 
         ////	Command Override
         // Override the existing click command,
@@ -113,22 +113,22 @@
           .click(function (e) {
             ////	Select the Modal Identifier
             // IFHREF Use data-open-modal if available
-            var modal_id;
+            var modal_id
             if ($(this).attr("data-modal-id")) {
-              modal_id = $(this).attr("data-modal-id");
+              modal_id = $(this).attr("data-modal-id")
               // IFHREF Fall back to href
             } else if ($(this).attr("href")) {
-              modal_id = $(this).attr("href");
+              modal_id = $(this).attr("href")
               // IFHREF Fail entirely.
             } else {
-              return false;
+              return false
             } // IFHREF
 
             ////	Validate the Modal Identifier
             // Ensure modal_id is a CSS selector (starts with # or .)
             // to prevent DOM-based XSS via jQuery HTML interpretation.
             if (!/^[#.][^\s]/.test(modal_id)) {
-              return false;
+              return false
             }
 
             ////	Close with closeButton
@@ -136,8 +136,8 @@
             // use it to call the close command.
             if (options.closeButton) {
               $(options.closeButton).click(function () {
-                leanModal_Close(modal_id);
-              });
+                leanModal_Close(modal_id)
+              })
             }
 
             ////	Escape with `Esc`
@@ -146,16 +146,16 @@
             if (!options.disableCloseOnEscape) {
               $(document).on("keyup", function (evt) {
                 if (evt.keyCode == 27) {
-                  leanModal_Close(modal_id);
+                  leanModal_Close(modal_id)
                 }
-              });
+              })
             }
 
             ////	There can be only one.
             // Overlay. If there isn't an overlay, add one.
             if ($("#js-leanmodal-overlay").length == 0) {
-              var overlay = $('<div id="js-leanmodal-overlay"></div>');
-              $("body").append(overlay);
+              var overlay = $('<div id="js-leanmodal-overlay"></div>')
+              $("body").append(overlay)
             }
 
             ////	Envelope in Darkness
@@ -164,26 +164,26 @@
             if (!options.disableCloseOnOverlayClick) {
               $("#js-leanmodal-overlay").click(function (e) {
                 if (e.target == this) {
-                  leanModal_Close(modal_id);
+                  leanModal_Close(modal_id)
                 }
-              });
+              })
             }
 
             ////	Modal Positioning
             // Position the modal centrally inside the overlay using flexbox.
             if (options.modalCenter) {
-              $(document.querySelector(modal_id)).appendTo("#js-leanmodal-overlay");
+              $(document.querySelector(modal_id)).appendTo("#js-leanmodal-overlay")
             }
 
             ////	Curtain Up
             // Fade in the modal and overlay.
-            $("#js-leanmodal-overlay").removeClass("js-leanmodal-inactive").addClass("js-leanmodal-active");
-            $(document.querySelector(modal_id)).removeClass("js-leanmodal-inactive").addClass("js-leanmodal-active");
+            $("#js-leanmodal-overlay").removeClass("js-leanmodal-inactive").addClass("js-leanmodal-active")
+            $(document.querySelector(modal_id)).removeClass("js-leanmodal-inactive").addClass("js-leanmodal-active")
             ////	Default Prevention
             // Prevent whatever the default was (probably scrolling).
-            e.preventDefault();
-          }); // CLICKOVERRIDE
-      }); // FOREACHLINK
+            e.preventDefault()
+          }) // CLICKOVERRIDE
+      }) // FOREACHLINK
     }, // EXTENDFUNC_LEANMODAL
-  }); // EXTENDFUNC
-})(jQuery); // ANONFUNC This passes in `jQuery` as `$`
+  }) // EXTENDFUNC
+})(jQuery) // ANONFUNC This passes in `jQuery` as `$`
