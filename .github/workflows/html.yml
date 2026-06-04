@@ -1,14 +1,21 @@
-# eustasy/.Normal 4.0beta8
-name: Normal (HTML)
-
+# eustasy/.Normal 4.0beta10
+name: "Normal: HTML"
 on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["**.html", "**.htm"]
+    paths:
+      - "**.html"
+      - "**.htm"
+      - ".github/workflows/html.yml"
+      - ".qlty/configs/.htmlvalidate.json"
   pull_request:
     branches: [main]
-    paths: ["**.html", "**.htm"]
+    paths:
+      - "**.html"
+      - "**.htm"
+      - ".github/workflows/html.yml"
+      - ".qlty/configs/.htmlvalidate.json"
 
 permissions:
   contents: read
