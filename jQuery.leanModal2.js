@@ -90,11 +90,16 @@
 
       ////	Close the Modal
       // FUNCTION: Fade out the overlay and a passed identifier.
+      // Only unbind leanModal's own handlers, by namespace,
+      // so the page's handlers on the same elements survive.
       function leanModal_Close(modal_id) {
         $("#js-leanmodal-overlay").removeClass("js-leanmodal-active").addClass("js-leanmodal-inactive")
         $(document.querySelector(modal_id)).removeClass("js-leanmodal-active").addClass("js-leanmodal-inactive")
-        $("#js-leanmodal-overlay").unbind("click")
-        $(document).off("keyup")
+        $("#js-leanmodal-overlay").off("click.leanModal")
+        $(document).off("keyup.leanModal")
+        if (options.closeButton) {
+          $(options.closeButton).off("click.leanModal")
+        }
         $(document.querySelector(modal_id)).appendTo("body")
       }
 
@@ -134,21 +139,26 @@
             ////	Close with closeButton
             // If `closeButton` is set,
             // use it to call the close command.
+            // Unbind first, so reopening doesn't stack handlers.
             if (options.closeButton) {
-              $(options.closeButton).click(function () {
-                leanModal_Close(modal_id)
-              })
+              $(options.closeButton)
+                .off("click.leanModal")
+                .on("click.leanModal", function () {
+                  leanModal_Close(modal_id)
+                })
             }
 
             ////	Escape with `Esc`
             // Close the modal when someone presses `Esc`,
             // except when `disableCloseOnEscape` is set to `true`
             if (!options.disableCloseOnEscape) {
-              $(document).on("keyup", function (evt) {
-                if (evt.keyCode == 27) {
-                  leanModal_Close(modal_id)
-                }
-              })
+              $(document)
+                .off("keyup.leanModal")
+                .on("keyup.leanModal", function (evt) {
+                  if (evt.keyCode == 27) {
+                    leanModal_Close(modal_id)
+                  }
+                })
             }
 
             ////	There can be only one.
@@ -162,11 +172,13 @@
             // Close the modal when someone clicks on the overlay,
             // except when `disableCloseOnOverlayClick` is set to `true`
             if (!options.disableCloseOnOverlayClick) {
-              $("#js-leanmodal-overlay").click(function (e) {
-                if (e.target == this) {
-                  leanModal_Close(modal_id)
-                }
-              })
+              $("#js-leanmodal-overlay")
+                .off("click.leanModal")
+                .on("click.leanModal", function (e) {
+                  if (e.target == this) {
+                    leanModal_Close(modal_id)
+                  }
+                })
             }
 
             ////	Modal Positioning
