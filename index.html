@@ -2,11 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta http-equiv="cleartype" content="on">
-		<meta name="HandheldFriendly" content="True">
-		<meta name="MobileOptimized" content="320">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="keywords" content="eustasy jquery plugin modal dialog">
 		<meta name="description" content="A pure solution to putting your own HTML and CSS to work as a modal dialogue.">
 		<title>jQuery.leanModal2.js &nbsp;&middot;&nbsp; eustasy</title>
@@ -57,16 +53,17 @@
 
 			<section class="whole smablet-half equalize">
 				<h2>Installation &amp; Usage</h2>
-				<p>Include after jQuery, preferably from jsDelivr. Then add a trigger element with a <span class="code-ref">data-modal-id</span> attribute pointing to the <span class="code-ref">id</span> of the modal element, and initialise leanModal on the trigger's selector. A standard <span class="code-ref">href</span> attribute can be used instead of <span class="code-ref">data-modal-id</span>.</p>
-				<p>Note: The modal element must be a sibling to the trigger element, or a child of a sibling element. This is because the plugin uses jQuery's <span class="code-ref">.next()</span> method to find the modal.</p>
+				<p>Include after jQuery 3 or 4, preferably from jsDelivr. Then add a trigger element with a <span class="code-ref">data-modal-id</span> attribute pointing to the <span class="code-ref">id</span> of the modal element, and initialise leanModal on the trigger's selector. A standard <span class="code-ref">href</span> attribute can be used instead of <span class="code-ref">data-modal-id</span>. The modal can be anywhere in the page.</p>
+				<p>leanModal doesn't hide the modal before it is opened, so hide it yourself with a single-class rule such as <span class="code-ref">.modal-hidden { display: none; }</span>. An inline style or an ID selector would outrank the class leanModal adds on opening, and the modal would never appear.</p>
+				<p>The <a href="https://github.com/eustasy/jQuery.leanModal2#readme">README</a> has the full documentation: every option, the global options, and how the modal is moved in the page.</p>
 			</section>
 
 			<section class="whole smablet-half equalize">
-				<textarea class="code rounded" readonly>&lt;script src="jQuery.leanModal2.min.js">&lt;/script>
+				<textarea class="code rounded" readonly>&lt;script src="https://cdn.jsdelivr.net/gh/eustasy/jQuery.leanModal2@2/jQuery.leanModal2.min.js">&lt;/script>
 
 &lt;button class="js-leanmodal-trigger" data-modal-id="#my-modal">Open&lt;/button>
 
-&lt;div id="my-modal">
+&lt;div id="my-modal" class="modal-hidden">
 	Modal content goes here.
 	&lt;button class="js-leanmodal-close">Close&lt;/button>
 &lt;/div>
@@ -84,7 +81,9 @@
 
 			<section class="whole smablet-half equalize">
 				<h2>Defaults</h2>
-				<textarea class="code rounded" readonly>$('.leanmodal').leanModal({
+				<textarea class="code rounded" readonly>// The same as .leanModal() with no options.
+// GLOBAL options are set by the first call only.
+$('.js-leanmodal-trigger').leanModal({
 	defaultStyles: true, // GLOBAL
 	fadeTime: 200, // GLOBAL
 	overlayOpacity: 0.7, // GLOBAL
@@ -98,14 +97,10 @@
 
 			<section class="whole smablet-half equalize">
 				<h2>Modified</h2>
-				<textarea class="code rounded" readonly>$('.leanmodal').leanModal({
-	defaultStyles: true, // GLOBAL
-	fadeTime: 200, // GLOBAL
-	overlayOpacity: 0.7, // GLOBAL
+				<textarea class="code rounded" readonly>$('.js-leanmodal-trigger').leanModal({
 	closeButton: '.close-it',
 	disableCloseOnOverlayClick: true,
 	disableCloseOnEscape: true,
-	modalCenter: true,
 });</textarea>
 				<h3 class="button clickable rounded leanmodal-modified" data-modal-id="#modified-example">Modified Example</h3>
 			</section>
@@ -115,7 +110,8 @@
 		<hr class="section-breaker">
 
 		<footer>
-			<p class="text-center"><a href="https://github.com/eustasy/jQuery.leanModal2/blob/master/LICENSE.md">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2/releases">Releases</a></p>
+			<p class="text-center"><a href="https://github.com/eustasy/jQuery.leanModal2/blob/main/LICENSE.md">MIT License</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2#readme">Documentation</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2">GitHub</a> &nbsp;&middot;&nbsp; <a href="https://github.com/eustasy/jQuery.leanModal2/releases">Releases</a></p>
+			<p class="text-center">Based on leanModal v1.1 by <a href="http://finelysliced.com.au">Ray Stone</a>.</p>
 		</footer>
 
 		<div id="defaults-example" class="background-flatui-clouds color-flatui-midnight-blue display-none js-leanmodal-modal rounded">
