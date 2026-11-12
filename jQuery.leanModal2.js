@@ -110,14 +110,15 @@
         $(this).addClass("js-leanmodal-link")
 
         ////	Command Override
-        // Override the existing click command,
-        // and insert this new one.
+        // Replace leanModal's own click handler, by namespace,
+        // so calling .leanModal() twice doesn't stack handlers
+        // and the page's own click handlers are left alone.
         // CLICKOVERRIDE
         $(this)
-          .unbind("click")
-          .click(function (e) {
+          .off("click.leanModal")
+          .on("click.leanModal", function (e) {
             ////	Select the Modal Identifier
-            // IFHREF Use data-open-modal if available
+            // IFHREF Use data-modal-id if available
             var modal_id
             if ($(this).attr("data-modal-id")) {
               modal_id = $(this).attr("data-modal-id")
@@ -155,7 +156,7 @@
               $(document)
                 .off("keyup.leanModal")
                 .on("keyup.leanModal", function (evt) {
-                  if (evt.keyCode == 27) {
+                  if (evt.key === "Escape" || evt.keyCode == 27) {
                     leanModal_Close(modal_id)
                   }
                 })
